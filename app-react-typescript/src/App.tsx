@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Login from './components/Login';
-import './App.css';
+import LandingPage from './components/LandingPage';
+
+const APP_NAME = 'Explora UChile';
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,14 +24,11 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100">
       {isLoggedIn ? (
-        <div>
-          <h1>Welcome to the App</h1>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
+        <LandingPage appName={APP_NAME} onLogout={handleLogout} />
       ) : (
-        <Login onLoginSuccess={handleLoginSuccess} />
+        <Login onLoginSuccess={handleLoginSuccess} appName={APP_NAME} />
       )}
     </div>
   );
